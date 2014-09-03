@@ -19,6 +19,6 @@ CORES=4
 for i in $(seq 893 916)
 do
   echo fastqc -o $OUTPUT_DIR $FASTQ_DIR/$SAMPLE_PREFIX$i.fastq.gz 
-  echo tophat -p4 -G $GENOME_DIR/$ANNOTATION -o $SAMPLE_PREFIX$i --no-novel-junc --segment-length 20 $GENOME_DIR/$GENOME_INDEX_BASE $FASTQ_DIR/$SAMPLE_PREFIX$i.fastq
-  echo cufflinks -p4 -G $GENOME_DIR/$ANNOTATION -o $SAMPLE_PREFIX$i $OUTPUT_DIR/$SAMPLE_PREFIX$i/accepted_hits.bam
+  echo tophat -p$CORES -G $GENOME_DIR/$ANNOTATION -o $SAMPLE_PREFIX$i\_tophat --no-novel-junc --segment-length 20 $GENOME_DIR/$GENOME_INDEX_BASE $FASTQ_DIR/$SAMPLE_PREFIX$i.fastq
+  echo cufflinks -p$CORES -G $GENOME_DIR/$ANNOTATION -o $SAMPLE_PREFIX$i\_cufflinks $OUTPUT_DIR/$SAMPLE_PREFIX$i/accepted_hits.bam
 done
