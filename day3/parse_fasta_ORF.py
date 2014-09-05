@@ -29,7 +29,6 @@ longest_100 = sorted_sequence_list[0:100]
 #print start
 
 k = 3
-index = 0
 
 starts_list = []
 
@@ -38,7 +37,7 @@ for long_seq in longest_100 :
         read_trimer = long_seq[i:i+k]
         if read_trimer == "ATG":
             starts_list.append(long_seq[i:])
-print starts_list
+#print starts_list
 #            starts[start] = set( [index] )
 #        else:
 #            starts[start].add(index)
@@ -50,6 +49,31 @@ print starts_list
 #    matched_sequences.update( kmers[kmer])
 #    if kmer in kmers:
 #        matched_sequences.update( kmers[kmer])
-#print "Query matched", sorted(matched_sequences)    
+#print "Query matched", sorted(matched_sequences)
+    
+stop_list = []
+
+for seq in starts_list :
+    n = len(seq)//3-1
+    for j in range( 0, n):
+        multiple_3 = 3*j 
+        read_trimer2 = seq[multiple_3:multiple_3+3]
+        if read_trimer2 == "TAG" or "TAA" or "TGA":
+            stop_list.append(seq)
+            
+
+print stop_list
+
+
+
+
+
+
+
+
+
+
+
+
     
     
