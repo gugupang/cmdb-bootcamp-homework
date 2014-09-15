@@ -65,6 +65,7 @@ for long_seq in longest_100 :
 #    if kmer in kmers:
 #        matched_sequences.update( kmers[kmer])
 #print "Query matched", sorted(matched_sequences)
+
     
 stop_list = []
 
@@ -73,11 +74,12 @@ for seq in starts_list :
     for j in range( 0, n):
         multiple_3 = 3*j 
         read_trimer2 = seq[multiple_3:multiple_3+3]
-        if read_trimer2 == "TAG" or "TAA" or "TGA":
-            stop_list.append(seq[,])
-            
+        #if read_trimer2 == "TAG" or "TAA" or "TGA":
+        if read_trimer2 == "TAG" or read_trimer2 == "TAA" or read_trimer2 == "TGA":
+            stop_list.append(seq[ :multiple_3+3])
+            break
 
-#print stop_list
+print stop_list
 
 
 
